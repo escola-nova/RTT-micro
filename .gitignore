@@ -1,0 +1,22 @@
+# Logs
+*.log
+
+# Environment variables
+env.js
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Output of 'npm pack'
+*.tgz
+
+# Distribution directories
+build/
+dist/
+lib/
