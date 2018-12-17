@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const {send, json} = require('micro');
+const cors = require('micro-cors')();
 
-module.exports = async (req, res) => {
+const server = async (req, res) => {
   if (req.method !== 'POST') {
     send(res, 405);
   } else {
@@ -11,10 +12,12 @@ module.exports = async (req, res) => {
       console.log('RECEIVED DATA');
       console.log(data);
       console.log('============================');
-      send(res, 200);
+      send(res, 200, data);
     } catch (err) {
       console.log(err);
       send(res, 400);
     }
   }
 };
+
+module.exports = cors(server);
