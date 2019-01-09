@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/escola-nova/RTT-micro#readme",
   "dependencies": {
+    "@google-cloud/pubsub": "0.22.2",
     "micro": "9.3.3",
     "micro-cors": "0.1.1"
   },

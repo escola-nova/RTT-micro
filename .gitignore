@@ -2,7 +2,8 @@
 *.log
 
 # Environment variables
-env.js
+.env
+private
 
 # Dependency directories
 node_modules/
