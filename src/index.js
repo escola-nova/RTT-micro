@@ -1,16 +1,20 @@
 /* eslint-disable no-console */
+
+'use strict';
+
 const {send, json} = require('micro');
 const cors = require('micro-cors')();
 
-const topic = require('./utils/topic');
+require('./utils/topic').createTopic('RTT-events');
+const {getTopic} = require('./utils/topic');
 
 const server = async (req, res) => {
-  // await topic.createTopic('RTT-events');
   if (req.method !== 'POST') {
     send(res, 405);
   } else {
     try {
-      console.log(process.env.type);
+      const topic = await getTopic('RTT-events');
+      console.log('TOPIC NAME', topic.name);
       const data = await json(req);
       const {id_token: uid} = req.headers;
       console.log('============================');
