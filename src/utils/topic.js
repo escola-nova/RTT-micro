@@ -2,7 +2,7 @@
 
 'use strict';
 
-const {PubSub} = require('@google-cloud/pubsub');
+const { PubSub } = require('@google-cloud/pubsub');
 
 const config = require('../private/config.json');
 

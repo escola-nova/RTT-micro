@@ -2,32 +2,15 @@
 
 'use strict';
 
-const {send, json} = require('micro');
-const cors = require('micro-cors')();
+const express = require('express');
+const cors = require('cors')();
 
-require('./utils/topic').createTopic('RTT-events');
-const {getTopic} = require('./utils/topic');
+const bodyParser = express.json();
+const app = express();
 
-const server = async (req, res) => {
-  if (req.method !== 'POST') {
-    send(res, 405);
-  } else {
-    try {
-      const topic = await getTopic('RTT-events');
-      console.log('TOPIC NAME', topic.name);
-      const data = await json(req);
-      const {id_token: uid} = req.headers;
-      console.log('============================');
-      console.log('RECEIVED DATA');
-      console.log(uid);
-      console.log(data);
-      console.log('============================');
-      send(res, 200, data);
-    } catch (err) {
-      console.log(err);
-      send(res, 400);
-    }
-  }
-};
+const PORT = require('./config/server.config').PORT || 3000;
+const { postPubSubMessage } = require('./controllers');
 
-module.exports = cors(server);
+app.post('/', cors, bodyParser, postPubSubMessage);
+
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
