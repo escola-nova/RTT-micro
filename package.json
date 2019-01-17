@@ -2,12 +2,13 @@
   "name": "rtt-micro",
   "version": "0.0.0",
   "description": "Micro service to accept data from RTT-extension",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "dev": "nodemon src/index.js",
     "format": "prettier --write \"**/*.+(js|css|sass|yml|yaml|scss|json)\"",
     "lint": "eslint src",
-    "precommit": "npm run lint",
-    "start": "micro"
+    "precommit": "npm run format && npm run lint",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,10 @@
   },
   "homepage": "https://github.com/escola-nova/RTT-micro#readme",
   "dependencies": {
-    "micro": "9.3.3"
+    "@google-cloud/pubsub": "0.22.2",
+    "cors": "2.8.5",
+    "dotenv": "6.2.0",
+    "express": "4.16.4"
   },
   "devDependencies": {
     "eslint": "5.10.0",
@@ -29,6 +33,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-prettier": "3.0.0",
     "husky": "1.2.0",
+    "nodemon": "1.18.9",
     "prettier": "1.15.3"
   }
 }
