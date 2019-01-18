@@ -8,8 +8,7 @@ exports.postPubSubMessage = async (req, res, next) => {
   if (req.method !== 'POST') await next();
   try {
     const topic = await getTopic('RTT-events');
-    const { id_token: uid } = req.headers;
-    console.log(topic, uid);
+    console.log(topic);
     // Post message to pubSub collection
     res.status(201).send(req.body);
   } catch (err) {
