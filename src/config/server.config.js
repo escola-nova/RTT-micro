@@ -13,4 +13,5 @@ module.exports = {
     issuer: process.env.AUTH0_ISSUER,
     algorithms: ['RS256'],
   },
+  PUB_SUB_TOPIC: process.env.PUB_SUB_TOPIC || 'RTT-events',
 };
