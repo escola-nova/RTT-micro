@@ -1,0 +1,9 @@
+# Specify the logstash base image
+FROM docker.elastic.co/logstash/logstash:6.5.4
+
+# Remove the default config file
+RUN rm -f /usr/share/logstash/pipeline/logstash.conf
+
+COPY ./rtt-config.yaml /usr/share/logstash/config/
+
+CMD logstash -f /usr/share/logstash/config/rtt-config.yaml
